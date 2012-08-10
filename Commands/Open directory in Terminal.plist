@@ -23,7 +23,7 @@ def terminal_script(dir)
   return &lt;&lt;-APPLESCRIPT
     tell application "Terminal"
       activate
-      do script "cd #{e_as(e_sh(dir))}; clear; pwd"
+      do script "cd #{e_as(e_sh(dir))}; clear" in the last tab of window 1
     end tell
 APPLESCRIPT
 end
