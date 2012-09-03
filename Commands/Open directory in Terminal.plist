@@ -21,8 +21,11 @@ end
 
 def terminal_script(dir)
   return &lt;&lt;-APPLESCRIPT
+    tell application "Terminal" to activate
+    tell application "System Events"
+    	tell process "Terminal" to keystroke "t" using command down
+    end tell
     tell application "Terminal"
-      activate
       do script "cd #{e_as(e_sh(dir))}; clear" in the last tab of window 1
     end tell
 APPLESCRIPT
@@ -60,15 +63,23 @@ end
 </string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>^O</string>
 	<key>name</key>
 	<string>Open Terminal</string>
-	<key>output</key>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
 	<string>discard</string>
 	<key>semanticClass</key>
 	<string>callback.file-browser.action-menu</string>
 	<key>uuid</key>
 	<string>54CDB56E-85EA-11D9-B369-000A95E13C98</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
