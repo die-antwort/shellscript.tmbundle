@@ -16,8 +16,6 @@ echo -n "${res%"${res##*[![:space:]]}"}"
 	<string>selection</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^~r</string>
 	<key>name</key>
 	<string>Execute Line / Selection and Replace With Result</string>
 	<key>outputCaret</key>
