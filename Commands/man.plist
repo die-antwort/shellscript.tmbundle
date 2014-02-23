@@ -48,7 +48,7 @@ fi
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^h</string>
+	<string>^H</string>
 	<key>name</key>
 	<string>Documentation for Word / Selection</string>
 	<key>outputCaret</key>
