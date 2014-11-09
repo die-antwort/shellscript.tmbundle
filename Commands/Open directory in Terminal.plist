@@ -30,13 +30,16 @@ end
 
 def terminal_script_new_tab(dir)
   return &lt;&lt;-APPLESCRIPT
-    tell application "Terminal" to activate
-    tell application "System Events"
-      tell process "Terminal" to keystroke "t" using command down
-    end tell
-    tell application "Terminal"
-      do script "cd #{e_as(e_sh(dir))}; clear; pwd" in the last tab of window 1
-    end tell
+  tell application "Terminal"
+  	activate
+  	tell application "System Events"
+  		repeat while "Terminal" is not name of (process 1 where frontmost is true)
+  			delay 0.1
+  		end repeat
+  		tell process "Terminal" to keystroke "t" using command down
+  	end tell
+  	do script "cd #{e_as(e_sh(dir))}; clear; pwd" in the last tab of window 1
+  end tell
 APPLESCRIPT
 end
 
@@ -65,7 +68,7 @@ if dir = find_directory
   if ENV['TM_TERMINAL'] =~ /^iterm$/i || is_running('iTerm')
     script = iterm_script(dir)
   else
-    script = ENV['TM_TERMINAL_NEW_WINDOW'] ? terminal_script_new_window(dir) : terminal_script_new_tab(dir)
+    script = ENV['TM_TERMINAL_USE_TABS'] ? terminal_script_new_tab(dir) : terminal_script_new_window(dir)
   end
   open("|osascript", "w") { |io| io &lt;&lt; script }
 end
