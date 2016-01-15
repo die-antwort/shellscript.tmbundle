@@ -16,6 +16,8 @@
 	</array>
 	<key>firstLineMatch</key>
 	<string>^#!.*\b(bash|zsh|sh|tcsh)|^#\s*-\*-[^*]*mode:\s*shell-script[^*]*-\*-</string>
+	<key>injectionSelector</key>
+	<string>meta.embedded_bash $</string>
 	<key>keyEquivalent</key>
 	<string>^~S</string>
 	<key>name</key>
