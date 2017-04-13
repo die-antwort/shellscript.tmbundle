@@ -84,6 +84,10 @@
 			<key>include</key>
 			<string>#support</string>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>#lines</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -334,7 +338,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=^|;|&amp;|\s)(function)\s+([^\s&lt;&gt;;'"\\|$&amp;()]+)(?:\s*(\(\)))?</string>
+					<string>(?&lt;=^|;|&amp;)\s*(function)\s+([^\s&lt;&gt;;'"\\|$&amp;()]+)(?:\s*(\(\)))?</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -354,7 +358,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>;|&amp;|$</string>
+					<string>;|&amp;|\n</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
@@ -375,7 +379,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=^|;|&amp;|\s)([^\s&lt;&gt;;'"\\|$&amp;()]+)\s*(\(\))</string>
+					<string>(?&lt;=^|;|&amp;)\s*([^\s&lt;&gt;;'"\\|$&amp;()]+)\s*(\(\))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -390,7 +394,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>;|&amp;|$</string>
+					<string>;|&amp;|\n</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
@@ -1246,6 +1250,18 @@
 					<string>(?&lt;=^|;|&amp;|\s)(?:export|declare|typeset|local|readonly)(?=\s|;|&amp;|$)</string>
 					<key>name</key>
 					<string>storage.modifier.shell</string>
+				</dict>
+			</array>
+		</dict>
+		<key>lines</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\\\n</string>
+					<key>name</key>
+					<string>constant.character.escape.newline.shell</string>
 				</dict>
 			</array>
 		</dict>
