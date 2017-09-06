@@ -1313,7 +1313,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$|\))</string>
 					<key>name</key>
 					<string>meta.scope.for-loop.shell</string>
 					<key>patterns</key>
@@ -1341,7 +1341,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$|\))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1372,7 +1372,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$|\))</string>
 					<key>name</key>
 					<string>meta.scope.while-loop.shell</string>
 					<key>patterns</key>
@@ -1400,7 +1400,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$|\))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1431,7 +1431,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(esac)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(esac)(?=\s|;|&amp;|$|\))</string>
 					<key>name</key>
 					<string>meta.scope.case-block.shell</string>
 					<key>patterns</key>
@@ -1448,7 +1448,7 @@
 								</dict>
 							</dict>
 							<key>end</key>
-							<string>(?&lt;=^|;|&amp;|\s)(?=(?:esac)(?:\s|;|&amp;|$))</string>
+							<string>(?&lt;=^|;|&amp;|\s)(?=(?:esac)(?:\s|;|&amp;|$|\)))</string>
 							<key>name</key>
 							<string>meta.scope.case-body.shell</string>
 							<key>patterns</key>
@@ -1487,7 +1487,7 @@
 					<key>comment</key>
 					<string>Restrict match to avoid matching in lines like `dd if=/dev/sda1 …`</string>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(fi)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(fi)(?=\s|;|&amp;|$|\))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
