@@ -15,7 +15,7 @@
 		<string>.textmate_init</string>
 	</array>
 	<key>firstLineMatch</key>
-	<string>^#!.*\b(bash|zsh|sh|tcsh)|^#\s*-\*-[^*]*mode:\s*shell-script[^*]*-\*-</string>
+	<string>^#!.*\b(bash|zsh|sh|tcsh)|^#.*-\*-.*\bshell-script\b.*-\*-</string>
 	<key>keyEquivalent</key>
 	<string>^~S</string>
 	<key>name</key>
@@ -81,6 +81,10 @@
 		<dict>
 			<key>include</key>
 			<string>#support</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#lines</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -182,6 +186,22 @@
 			<string>(?!\G)</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>begin</key>
+					<string>^(#!)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.comment.line.shebang.shell</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\n</string>
+					<key>name</key>
+					<string>comment.line.shebang.shell</string>
+				</dict>
 				<dict>
 					<key>begin</key>
 					<string>#</string>
@@ -316,7 +336,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=^|;|&amp;|\s)(function)\s+([^\s&lt;&gt;;'"\\|$&amp;()]+)(?:\s*(\(\)))?</string>
+					<string>(?&lt;=^|;|&amp;)\s*(function)\s+([^\s&lt;&gt;;'"\\|$&amp;()]+)(?:\s*(\(\)))?</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -336,7 +356,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>;|&amp;|$</string>
+					<string>;|&amp;|\n</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
@@ -357,7 +377,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=^|;|&amp;|\s)([^\s&lt;&gt;;'"\\|$&amp;()]+)\s*(\(\))</string>
+					<string>(?&lt;=^|;|&amp;)\s*([^\s&lt;&gt;;'"\\|$&amp;()]+)\s*(\(\))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -372,7 +392,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>;|&amp;|$</string>
+					<string>;|&amp;|\n</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
@@ -399,7 +419,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)-("|'|)(RUBY)\2</string>
+					<string>(&lt;&lt;)-\s*("|'|)(RUBY)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -445,7 +465,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)("|'|)(RUBY)\2</string>
+					<string>(&lt;&lt;)\s*("|'|)(RUBY)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -491,7 +511,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)-("|'|)(PYTHON)\2</string>
+					<string>(&lt;&lt;)-\s*("|'|)(PYTHON)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -537,7 +557,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)("|'|)(PYTHON)\2</string>
+					<string>(&lt;&lt;)\s*("|'|)(PYTHON)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -583,7 +603,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)-("|'|)(APPLESCRIPT)\2</string>
+					<string>(&lt;&lt;)-\s*("|'|)(APPLESCRIPT)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -629,7 +649,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)("|'|)(APPLESCRIPT)\2</string>
+					<string>(&lt;&lt;)\s*("|'|)(APPLESCRIPT)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -675,7 +695,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)-("|'|)(HTML)\2</string>
+					<string>(&lt;&lt;)-\s*("|'|)(HTML)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -721,7 +741,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)("|'|)(HTML)\2</string>
+					<string>(&lt;&lt;)\s*("|'|)(HTML)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -767,7 +787,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)-("|'|)(MARKDOWN)\2</string>
+					<string>(&lt;&lt;)-\s*("|'|)(MARKDOWN)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -813,7 +833,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)("|'|)(MARKDOWN)\2</string>
+					<string>(&lt;&lt;)\s*("|'|)(MARKDOWN)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -859,7 +879,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)-("|'|)(TEXTILE)\2</string>
+					<string>(&lt;&lt;)-\s*("|'|)(TEXTILE)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -905,7 +925,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)("|'|)(TEXTILE)\2</string>
+					<string>(&lt;&lt;)\s*("|'|)(TEXTILE)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -951,7 +971,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)-("|'|)\\?(\w+)\2</string>
+					<string>(&lt;&lt;)-\s*("|'|)\\?(\w+)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -988,7 +1008,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(&lt;&lt;)("|'|)\\?(\w+)\2</string>
+					<string>(&lt;&lt;)\s*("|'|)\\?(\w+)\2</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1054,7 +1074,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(&lt;&lt;&lt;)((')[^']*('))</string>
+					<string>(&lt;&lt;&lt;)\s*((')[^']*('))</string>
 					<key>name</key>
 					<string>meta.herestring.shell</string>
 				</dict>
@@ -1083,7 +1103,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(&lt;&lt;&lt;)((")(\\("|\\)|[^"])*("))</string>
+					<string>(&lt;&lt;&lt;)\s*((")(\\("|\\)|[^"])*("))</string>
 					<key>name</key>
 					<string>meta.herestring.shell</string>
 				</dict>
@@ -1102,7 +1122,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(&lt;&lt;&lt;)(([^\s\\]|\\.)+)</string>
+					<string>(&lt;&lt;&lt;)\s*(([^\s\\]|\\.)+)</string>
 					<key>name</key>
 					<string>meta.herestring.shell</string>
 				</dict>
@@ -1175,6 +1195,22 @@
 							<string>constant.character.escape.shell</string>
 						</dict>
 						<dict>
+							<key>begin</key>
+							<string>(?&lt;=^|;|&amp;|\s|`)(#)(?!\{)</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.comment.shell</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=`)|\n</string>
+							<key>name</key>
+							<string>comment.line.number-sign.shell</string>
+						</dict>
+						<dict>
 							<key>include</key>
 							<string>$self</string>
 						</dict>
@@ -1206,6 +1242,22 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>begin</key>
+							<string>(?&lt;=^|;|&amp;|\s|\()(#)(?!\{)</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.definition.comment.shell</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>(?=\))|\n</string>
+							<key>name</key>
+							<string>comment.line.number-sign.shell</string>
+						</dict>
+						<dict>
 							<key>include</key>
 							<string>$self</string>
 						</dict>
@@ -1219,7 +1271,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;=^|;|&amp;|\s)(?:if|then|else|elif|fi|for|in|do|done|select|case|continue|esac|while|until|return)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(?:if|then|else|elif|fi|for|in|do|done|select|case|continue|esac|while|until|return|coproc)(?=\s|;|&amp;|$)</string>
 					<key>name</key>
 					<string>keyword.control.shell</string>
 				</dict>
@@ -1228,6 +1280,18 @@
 					<string>(?&lt;=^|;|&amp;|\s)(?:export|declare|typeset|local|readonly)(?=\s|;|&amp;|$)</string>
 					<key>name</key>
 					<string>storage.modifier.shell</string>
+				</dict>
+			</array>
+		</dict>
+		<key>lines</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\\\n</string>
+					<key>name</key>
+					<string>constant.character.escape.newline.shell</string>
 				</dict>
 			</array>
 		</dict>
@@ -1279,7 +1343,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$|\))</string>
 					<key>name</key>
 					<string>meta.scope.for-loop.shell</string>
 					<key>patterns</key>
@@ -1292,7 +1356,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=^|;|&amp;|\s)(for)\s+((?:[^\s\\]|\\.)+)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(for)\s+([^\s\\]+)(?=\s|;|&amp;|$)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1307,7 +1371,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$|\))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1338,7 +1402,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$|\))</string>
 					<key>name</key>
 					<string>meta.scope.while-loop.shell</string>
 					<key>patterns</key>
@@ -1351,7 +1415,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=^|;|&amp;|\s)(select)\s+((?:[^\s\\]|\\.)+)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(select)\s+([^\s\\]+)(?=\s|;|&amp;|$)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1366,7 +1430,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(done)(?=\s|;|&amp;|$|\))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1397,7 +1461,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(esac)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(esac)(?=\s|;|&amp;|$|\))</string>
 					<key>name</key>
 					<string>meta.scope.case-block.shell</string>
 					<key>patterns</key>
@@ -1414,7 +1478,7 @@
 								</dict>
 							</dict>
 							<key>end</key>
-							<string>(?&lt;=^|;|&amp;|\s)(?=(?:esac)(?:\s|;|&amp;|$))</string>
+							<string>(?&lt;=^|;|&amp;|\s)(?=(?:esac)(?:\s|;|&amp;|$|\)))</string>
 							<key>name</key>
 							<string>meta.scope.case-body.shell</string>
 							<key>patterns</key>
@@ -1453,7 +1517,7 @@
 					<key>comment</key>
 					<string>Restrict match to avoid matching in lines like `dd if=/dev/sda1 …`</string>
 					<key>end</key>
-					<string>(?&lt;=^|;|&amp;|\s)(fi)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(fi)(?=\s|;|&amp;|$|\))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1771,7 +1835,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;=^|;|&amp;|\s)(?:alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|dirs|disown|echo|enable|eval|exec|exit|false|fc|fg|getopts|hash|help|history|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|times|trap|true|type|ulimit|umask|unalias|unset|wait)(?=\s|;|&amp;|$)</string>
+					<string>(?&lt;=^|;|&amp;|\s)(?:alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|dirs|disown|echo|enable|eval|exec|exit|false|fc|fg|getopts|hash|help|history|jobs|kill|let|logout|mapfile|popd|printf|pushd|pwd|read(array)?|readonly|set|shift|shopt|source|suspend|test|times|trap|true|type|ulimit|umask|unalias|unset|wait)(?=\s|;|&amp;|$)</string>
 					<key>name</key>
 					<string>support.function.builtin.shell</string>
 				</dict>
